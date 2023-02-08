@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.yourproject.userManage.dao.UserMapper">
+
+    <select id="findUser"  resultType="com.example.yourproject.userManage.bean.User">
+        select * from user_info where uid=#{uid} and password=#{password}
+    </select>
+
+    <select id="find"  resultType="com.example.yourproject.userManage.bean.User">
+        select * from user_info where uid=#{uid}
+    </select>
+
+    <delete id="remove">
+        delete from user_info where uid=#{uid}
+    </delete>
+
+<!--    <select id="findAll"  resultType="com.example.sxdproject.userManage.bean.User">-->
+<!--        select * from user-->
+<!--    </select>-->
+
+    <insert id="create">
+        insert into user_info(uid,eid,password,permission) values(#{uid},#{eid},#{password},#{permission})
+    </insert>
+
+    <select id="getpwd" resultType="java.lang.String">
+        select password from user_info where uid=#{uid}
+    </select>
+
+    <update id="changepwd">
+        update user_info set password=#{password} where uid=#{uid}
+    </update>
+</mapper>
